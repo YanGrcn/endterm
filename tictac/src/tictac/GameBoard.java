@@ -5,6 +5,7 @@ import java.util.Random;
 public class GameBoard {
 	public int Victory=0;
 	String VictoryOfWho="NoWin";
+	//Making a Gameboard
 	private char[][] GameBoard={{' ','|',' ','|',' '},{'-','+','-','+','-'},{' ','|',' ','|',' '},{'-','+','-','+','-'},{' ','|',' ','|',' '}};
 	public void getGameBoard() {
 		System.out.println("Your gameboard for now: ");
@@ -16,6 +17,7 @@ public class GameBoard {
 		}
 		System.out.println();
 	}
+	//Adding X or O to the Gameboard
 	public void GamePositionAdd(int Row, int Column, String Gamer) {
 		if (Row==1) {
 		Row=Row-1;
@@ -48,6 +50,7 @@ public class GameBoard {
 			this.GameBoard[Row][Column]='O';
 		}
 	}
+	//Checking and returning X or O on direct position
 	public char GamePositionCheck(int Row, int Column) {
 		if (Row==1) {
 		Row=Row-1;
@@ -69,6 +72,7 @@ public class GameBoard {
 		}
 		return this.GameBoard[Row][Column];
 	}
+	//Checking if there are a winner
 	public void WinnerTest(){
 		if(GamePositionCheck(1,1)==GamePositionCheck(1,2) & GamePositionCheck(1,2)==GamePositionCheck(1,3) & GamePositionCheck(1,1)!=' ' & GamePositionCheck(1,2)!=' ' & GamePositionCheck(1,3)!=' '){
 			if (GamePositionCheck(1,1)=='X') {
@@ -135,6 +139,7 @@ public class GameBoard {
 			}
 		}
 	}
+	//check for a draw
 	public void TieTest() {
 		if(Victory!=1) {
 			int Tie=1;
@@ -151,6 +156,7 @@ public class GameBoard {
 		}
 		
 	}
+	//Bots turn, how he adds a signs
 	public void BotsTurn() {
 		int Used=0;
 		int Row=-1;
@@ -457,6 +463,7 @@ public class GameBoard {
 		GamePositionAdd(Row, Column, "Bot");
 		}
 	}
+	//win check
 	public void VictoryTest() {
 		if (VictoryOfWho!="NoWin" & VictoryOfWho!="Tie") {
 			this.Victory=1;
@@ -467,9 +474,11 @@ public class GameBoard {
 			System.out.println(Tie());
 		}
 	}
+	//returning the winner
 	public String Victory() {
 		return "Game over. " + VictoryOfWho + " won!";
 	}
+	//returning a message about tie
 	public String Tie() {
 		return "Game over." + VictoryOfWho + "!";
 	}
